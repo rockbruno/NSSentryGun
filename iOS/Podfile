@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs'
+
+platform :ios, '11.0'
+
+inhibit_all_warnings!
+  
+target 'NSSentryGun' do
+  use_frameworks!
+  pod 'SwiftSocket'
+end
