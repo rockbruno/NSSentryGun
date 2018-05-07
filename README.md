@@ -30,4 +30,4 @@ TODO
 
 ## Thanks
 
-I borrowed some AVCaptureVideoPreviewLayer code from [https://github.com/Weijay/AppleFaceDetection](Weijay). Thanks!
+I borrowed some AVCaptureVideoPreviewLayer code from https://github.com/Weijay/AppleFaceDetection. Thanks!
