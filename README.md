@@ -19,6 +19,8 @@ Things you need to do to run this:
 - Change the pins at the Arduino file to match your actual build (Current: servo at pin 9 and buzzer at pin 11)
 - The Raspberry listens to commands from a Dream Cheeky Big Red Button: https://www.amazon.com/Dream-Cheeky-902-Electronic-Reference/dp/B004D18MCK/ref=cm_cr_arp_d_product_top?ie=UTF8 . You might want to edit the Raspberry's python file to stop this interaction if you do not want to use this button.
 
+Detailed instructions TODO
+
 ## Interacting with the Sentry Gun:
 
 TODO
