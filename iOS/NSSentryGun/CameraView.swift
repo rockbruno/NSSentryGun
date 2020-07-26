@@ -19,9 +19,7 @@ final class CameraView: UIView {
         }
     }
 
-    private var requests = [VNRequest]()
     private var maskLayer = [CAShapeLayer]()
-    var devicePosition: AVCaptureDevice.Position = .back
 
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         return layer as! AVCaptureVideoPreviewLayer
@@ -31,48 +29,15 @@ final class CameraView: UIView {
         return AVCaptureVideoPreviewLayer.self
     }
 
-    private let connectionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .callout)
-        label.textColor = .white
-        label.text = "Connecting..."
-        label.textAlignment = .left
-        return label
-    }()
-
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.largeTitle)
-        label.textColor = .white
-        label.numberOfLines = 3
-        label.textAlignment = .center
-        return label
-    }()
-
-    private let degreesLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title3)
-        label.textColor = .white
-        return label
-    }()
-
     init(delegate: CameraViewDelegate) {
         self.delegate = delegate
         super.init(frame: .zero)
         captureSession = AVCaptureSession()
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-
-    private func setup() {
-        backgroundColor = .black
         setupCaptureSession()
-        setupVision()
-        setupLabels()
-        constrainLabels()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
     }
 
     private func setupCaptureSession() {
@@ -86,6 +51,11 @@ final class CameraView: UIView {
         } else if let frontCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front) {
             defaultVideoDevice = frontCameraDevice
         }
+        guard defaultVideoDevice != nil else {
+            captureSession?.commitConfiguration()
+            captureSession = nil
+            return
+        }
         let input = try! AVCaptureDeviceInput(device: defaultVideoDevice!)
         captureSession?.addInput(input as AVCaptureInput)
         let captureMetadataOutput = AVCaptureVideoDataOutput()
@@ -96,10 +66,41 @@ final class CameraView: UIView {
         captureMetadataOutput.setSampleBufferDelegate(self, queue: outputQueue)
         captureSession?.addOutput(captureMetadataOutput)
         captureSession?.commitConfiguration()
+        videoPreviewLayer.connection?.videoOrientation = .landscapeRight
     }
 
-    private func setupVision() {
-        requests = [VNDetectFaceRectanglesRequest(completionHandler: self.handleFaces)]
+    func startCaptureSession() {
+        captureSession?.startRunning()
+    }
+
+    func stopCaptureSession() {
+        captureSession?.stopRunning()
+    }
+}
+
+extension CameraView: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer),
+              let exifOrientation = CGImagePropertyOrientation(rawValue: 0) else
+        {
+            return
+        }
+        var requestOptions: [VNImageOption : Any] = [:]
+        let key = kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix
+        if let cameraIntrinsicData = CMGetAttachment(sampleBuffer, key: key, attachmentModeOut: nil) {
+            requestOptions = [.cameraIntrinsics: cameraIntrinsicData]
+        }
+        let imageRequestHandler = VNImageRequestHandler(
+            cvPixelBuffer: pixelBuffer,
+            orientation: exifOrientation,
+            options: requestOptions
+        )
+        do {
+            let request = VNDetectFaceRectanglesRequest(completionHandler: handleFaces)
+            try imageRequestHandler.perform([request])
+        } catch {
+            print(error)
+        }
     }
 
     func handleFaces(request: VNRequest, error: Error?) {
@@ -110,17 +111,24 @@ final class CameraView: UIView {
             for mask in self.maskLayer {
                 mask.removeFromSuperlayer()
             }
-            if results.isEmpty {
-                self.setUnknownPrediction()
+            guard results.isEmpty == false else {
                 self.delegate.cameraViewFoundNoTargets()
-            } else {
-                let frames: [CGRect] = results.map {
-                    let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -self.frame.height)
-                    let translate = CGAffineTransform.identity.scaledBy(x: self.frame.width, y: self.frame.height)
-                    return $0.boundingBox.applying(translate).applying(transform)
-                }
-                frames.sorted { ($0.width * $0.height) > ($1.width * $1.height) }.enumerated().forEach(self.drawFaceBox)
+                return
             }
+            let frames: [CGRect] = results.map {
+                let transform = CGAffineTransform(scaleX: 1, y: -1)
+                                    .translatedBy(x: 0, y: -self.frame.height)
+                let translate = CGAffineTransform
+                                    .identity
+                                    .scaledBy(x: self.frame.width, y: self.frame.height)
+                return $0.boundingBox
+                            .applying(translate)
+                            .applying(transform)
+            }
+            frames
+                .sorted { ($0.width * $0.height) > ($1.width * $1.height) }
+                .enumerated()
+                .forEach(self.drawFaceBox)
         }
     }
 
@@ -141,74 +149,5 @@ final class CameraView: UIView {
         mask.borderWidth = 2
         maskLayer.append(mask)
         layer.insertSublayer(mask, at: 1)
-    }
-
-    private func setupLabels() {
-        addSubview(connectionLabel)
-        addSubview(nameLabel)
-        addSubview(degreesLabel)
-        setUnknownPrediction()
-    }
-
-    private func constrainLabels() {
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        degreesLabel.translatesAutoresizingMaskIntoConstraints = false
-        connectionLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -48),
-            nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            degreesLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 6),
-            degreesLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            connectionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            connectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
-        ])
-    }
-
-    func startCaptureSession() {
-        captureSession?.startRunning()
-    }
-
-    func stopCaptureSession() {
-        captureSession?.stopRunning()
-    }
-
-    func set(targetX: Int, targetY: Int) {
-        nameLabel.text = "Targeting"
-        degreesLabel.text = "X: \(targetX)° Y: \(targetY)°"
-    }
-
-    func setUnknownPrediction() {
-        nameLabel.text = "No targets"
-        degreesLabel.text = "Sentry mode"
-    }
-
-    func setConnected() {
-        connectionLabel.text = "Connected"
-        connectionLabel.textColor = .green
-    }
-
-    func setDisconnected() {
-        connectionLabel.text = "Disconnected"
-        connectionLabel.textColor = .red
-    }
-}
-
-extension CameraView: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer), let exifOrientation = CGImagePropertyOrientation(rawValue: exifOrientationFromDeviceOrientation()) else {
-            return
-        }
-        var requestOptions: [VNImageOption : Any] = [:]
-        if let cameraIntrinsicData = CMGetAttachment(sampleBuffer, kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, nil) {
-            requestOptions = [.cameraIntrinsics: cameraIntrinsicData]
-        }
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: exifOrientation, options: requestOptions)
-        do {
-            try imageRequestHandler.perform(requests)
-        } catch {
-            print(error)
-        }
     }
 }

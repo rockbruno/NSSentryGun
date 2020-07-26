@@ -3,263 +3,178 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0E954DD2DB1087BBF13AFB /* Pods_CoreMLSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E3EE650FB35D26585A2C4D /* Pods_CoreMLSample.framework */; };
-		6554A46271D0DF6E71E7E38A /* Pods_NSSentryGun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C782A86014DB94AED63D818B /* Pods_NSSentryGun.framework */; };
-		FD267F911EEA122A009AEB2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD267F901EEA122A009AEB2C /* AppDelegate.swift */; };
-		FD267F931EEA122A009AEB2C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD267F921EEA122A009AEB2C /* CameraViewController.swift */; };
-		FD267F981EEA122A009AEB2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD267F971EEA122A009AEB2C /* Assets.xcassets */; };
-		FD267F9B1EEA122A009AEB2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD267F991EEA122A009AEB2C /* LaunchScreen.storyboard */; };
-		FD8BBC9A20975238001CD1AF /* Orientations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8BBC9920975238001CD1AF /* Orientations.swift */; };
-		FDC6FF6B1EEAD2DB00ECA47F /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC6FF6A1EEAD2DB00ECA47F /* CameraView.swift */; };
-		FDC6FF6D1EEAD3C200ECA47F /* SmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC6FF6C1EEAD3C200ECA47F /* SmartViewController.swift */; };
+		59DE8DE124CE0DF5000AEC34 /* NSSentryGunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DE024CE0DF5000AEC34 /* NSSentryGunApp.swift */; };
+		59DE8DE324CE0DF5000AEC34 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DE224CE0DF5000AEC34 /* ContentView.swift */; };
+		59DE8DE524CE0DF6000AEC34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DE8DE424CE0DF6000AEC34 /* Assets.xcassets */; };
+		59DE8DE824CE0DF6000AEC34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59DE8DE724CE0DF6000AEC34 /* Preview Assets.xcassets */; };
+		59DE8DF624CE0E26000AEC34 /* CameraHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DEF24CE0E26000AEC34 /* CameraHostingController.swift */; };
+		59DE8DF724CE0E26000AEC34 /* TargetDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DF024CE0E26000AEC34 /* TargetDataViewModel.swift */; };
+		59DE8DF824CE0E26000AEC34 /* CameraViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DF124CE0E26000AEC34 /* CameraViewWrapper.swift */; };
+		59DE8DF924CE0E26000AEC34 /* SocketWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DF224CE0E26000AEC34 /* SocketWorker.swift */; };
+		59DE8DFA24CE0E26000AEC34 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DF324CE0E26000AEC34 /* CameraView.swift */; };
+		59DE8DFB24CE0E26000AEC34 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DF424CE0E26000AEC34 /* CameraViewController.swift */; };
+		59DE8DFC24CE0E26000AEC34 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DE8DF524CE0E26000AEC34 /* DataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F197DB1A2D6844DD00E96F4 /* Pods-CoreMLSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreMLSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreMLSample/Pods-CoreMLSample.release.xcconfig"; sourceTree = "<group>"; };
-		656582B314CFACE2DF090EBF /* Pods-CoreMLSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreMLSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CoreMLSample/Pods-CoreMLSample.debug.xcconfig"; sourceTree = "<group>"; };
-		87E3EE650FB35D26585A2C4D /* Pods_CoreMLSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreMLSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0648C5A3CC0617089F3FAD4 /* Pods-NSSentryGun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSSentryGun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NSSentryGun/Pods-NSSentryGun.debug.xcconfig"; sourceTree = "<group>"; };
-		C782A86014DB94AED63D818B /* Pods_NSSentryGun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSSentryGun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD267F8D1EEA122A009AEB2C /* NSSentryGun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSSentryGun.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD267F901EEA122A009AEB2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FD267F921EEA122A009AEB2C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		FD267F971EEA122A009AEB2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FD267F9A1EEA122A009AEB2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FD267F9C1EEA122A009AEB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD8BBC9920975238001CD1AF /* Orientations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientations.swift; sourceTree = "<group>"; };
-		FDC6FF6A1EEAD2DB00ECA47F /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		FDC6FF6C1EEAD3C200ECA47F /* SmartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartViewController.swift; sourceTree = "<group>"; };
-		FFFCFA30704FECD881C44479 /* Pods-NSSentryGun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSSentryGun.release.xcconfig"; path = "Pods/Target Support Files/Pods-NSSentryGun/Pods-NSSentryGun.release.xcconfig"; sourceTree = "<group>"; };
+		59DE8DDD24CE0DF5000AEC34 /* NSSentryGun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSSentryGun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59DE8DE024CE0DF5000AEC34 /* NSSentryGunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSentryGunApp.swift; sourceTree = "<group>"; };
+		59DE8DE224CE0DF5000AEC34 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		59DE8DE424CE0DF6000AEC34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		59DE8DE724CE0DF6000AEC34 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		59DE8DE924CE0DF6000AEC34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59DE8DEF24CE0E26000AEC34 /* CameraHostingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraHostingController.swift; sourceTree = "<group>"; };
+		59DE8DF024CE0E26000AEC34 /* TargetDataViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetDataViewModel.swift; sourceTree = "<group>"; };
+		59DE8DF124CE0E26000AEC34 /* CameraViewWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewWrapper.swift; sourceTree = "<group>"; };
+		59DE8DF224CE0E26000AEC34 /* SocketWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketWorker.swift; sourceTree = "<group>"; };
+		59DE8DF324CE0E26000AEC34 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		59DE8DF424CE0E26000AEC34 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		59DE8DF524CE0E26000AEC34 /* DataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		FD267F8A1EEA122A009AEB2C /* Frameworks */ = {
+		59DE8DDA24CE0DF5000AEC34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0E954DD2DB1087BBF13AFB /* Pods_CoreMLSample.framework in Frameworks */,
-				6554A46271D0DF6E71E7E38A /* Pods_NSSentryGun.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10C852F574F4ED6BA534B358 /* Pods */ = {
+		59DE8DD424CE0DF5000AEC34 = {
 			isa = PBXGroup;
 			children = (
-				656582B314CFACE2DF090EBF /* Pods-CoreMLSample.debug.xcconfig */,
-				1F197DB1A2D6844DD00E96F4 /* Pods-CoreMLSample.release.xcconfig */,
-				B0648C5A3CC0617089F3FAD4 /* Pods-NSSentryGun.debug.xcconfig */,
-				FFFCFA30704FECD881C44479 /* Pods-NSSentryGun.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		F2302341A1CFDAD601B5651A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				87E3EE650FB35D26585A2C4D /* Pods_CoreMLSample.framework */,
-				C782A86014DB94AED63D818B /* Pods_NSSentryGun.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FD267F841EEA122A009AEB2C = {
-			isa = PBXGroup;
-			children = (
-				FD267F8F1EEA122A009AEB2C /* NSSentryGun */,
-				FD267F8E1EEA122A009AEB2C /* Products */,
-				10C852F574F4ED6BA534B358 /* Pods */,
-				F2302341A1CFDAD601B5651A /* Frameworks */,
+				59DE8DDF24CE0DF5000AEC34 /* NSSentryGun */,
+				59DE8DDE24CE0DF5000AEC34 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FD267F8E1EEA122A009AEB2C /* Products */ = {
+		59DE8DDE24CE0DF5000AEC34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD267F8D1EEA122A009AEB2C /* NSSentryGun.app */,
+				59DE8DDD24CE0DF5000AEC34 /* NSSentryGun.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FD267F8F1EEA122A009AEB2C /* NSSentryGun */ = {
+		59DE8DDF24CE0DF5000AEC34 /* NSSentryGun */ = {
 			isa = PBXGroup;
 			children = (
-				FD267F901EEA122A009AEB2C /* AppDelegate.swift */,
-				FD267F921EEA122A009AEB2C /* CameraViewController.swift */,
-				FDC6FF6A1EEAD2DB00ECA47F /* CameraView.swift */,
-				FD8BBC9920975238001CD1AF /* Orientations.swift */,
-				FDC6FF701EEAD88800ECA47F /* Helpers */,
-				FD267F971EEA122A009AEB2C /* Assets.xcassets */,
-				FD267F991EEA122A009AEB2C /* LaunchScreen.storyboard */,
-				FD267F9C1EEA122A009AEB2C /* Info.plist */,
+				59DE8DE024CE0DF5000AEC34 /* NSSentryGunApp.swift */,
+				59DE8DE224CE0DF5000AEC34 /* ContentView.swift */,
+				59DE8DEF24CE0E26000AEC34 /* CameraHostingController.swift */,
+				59DE8DF324CE0E26000AEC34 /* CameraView.swift */,
+				59DE8DF424CE0E26000AEC34 /* CameraViewController.swift */,
+				59DE8DF124CE0E26000AEC34 /* CameraViewWrapper.swift */,
+				59DE8DF524CE0E26000AEC34 /* DataView.swift */,
+				59DE8DF224CE0E26000AEC34 /* SocketWorker.swift */,
+				59DE8DF024CE0E26000AEC34 /* TargetDataViewModel.swift */,
+				59DE8DE424CE0DF6000AEC34 /* Assets.xcassets */,
+				59DE8DE924CE0DF6000AEC34 /* Info.plist */,
+				59DE8DE624CE0DF6000AEC34 /* Preview Content */,
 			);
 			path = NSSentryGun;
 			sourceTree = "<group>";
 		};
-		FDC6FF701EEAD88800ECA47F /* Helpers */ = {
+		59DE8DE624CE0DF6000AEC34 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				FDC6FF6C1EEAD3C200ECA47F /* SmartViewController.swift */,
+				59DE8DE724CE0DF6000AEC34 /* Preview Assets.xcassets */,
 			);
-			path = Helpers;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD267F8C1EEA122A009AEB2C /* NSSentryGun */ = {
+		59DE8DDC24CE0DF5000AEC34 /* NSSentryGun */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD267F9F1EEA122A009AEB2C /* Build configuration list for PBXNativeTarget "NSSentryGun" */;
+			buildConfigurationList = 59DE8DEC24CE0DF6000AEC34 /* Build configuration list for PBXNativeTarget "NSSentryGun" */;
 			buildPhases = (
-				10122A59D03F24DBAD2BCB93 /* [CP] Check Pods Manifest.lock */,
-				FD267F891EEA122A009AEB2C /* Sources */,
-				FD267F8A1EEA122A009AEB2C /* Frameworks */,
-				FD267F8B1EEA122A009AEB2C /* Resources */,
-				E28C3FBF7DA7AABD470AE7C3 /* [CP] Embed Pods Frameworks */,
-				C97034E15B382A9289671B49 /* [CP] Copy Pods Resources */,
+				59DE8DD924CE0DF5000AEC34 /* Sources */,
+				59DE8DDA24CE0DF5000AEC34 /* Frameworks */,
+				59DE8DDB24CE0DF5000AEC34 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = NSSentryGun;
-			productName = CoreMLSample;
-			productReference = FD267F8D1EEA122A009AEB2C /* NSSentryGun.app */;
+			productName = NSSentryGun;
+			productReference = 59DE8DDD24CE0DF5000AEC34 /* NSSentryGun.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FD267F851EEA122A009AEB2C /* Project object */ = {
+		59DE8DD524CE0DF5000AEC34 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Bruno Rocha";
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					FD267F8C1EEA122A009AEB2C = {
-						CreatedOnToolsVersion = 9.0;
+					59DE8DDC24CE0DF5000AEC34 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
-			buildConfigurationList = FD267F881EEA122A009AEB2C /* Build configuration list for PBXProject "NSSentryGun" */;
-			compatibilityVersion = "Xcode 8.0";
+			buildConfigurationList = 59DE8DD824CE0DF5000AEC34 /* Build configuration list for PBXProject "NSSentryGun" */;
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = FD267F841EEA122A009AEB2C;
-			productRefGroup = FD267F8E1EEA122A009AEB2C /* Products */;
+			mainGroup = 59DE8DD424CE0DF5000AEC34;
+			productRefGroup = 59DE8DDE24CE0DF5000AEC34 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD267F8C1EEA122A009AEB2C /* NSSentryGun */,
+				59DE8DDC24CE0DF5000AEC34 /* NSSentryGun */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FD267F8B1EEA122A009AEB2C /* Resources */ = {
+		59DE8DDB24CE0DF5000AEC34 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD267F9B1EEA122A009AEB2C /* LaunchScreen.storyboard in Resources */,
-				FD267F981EEA122A009AEB2C /* Assets.xcassets in Resources */,
+				59DE8DE824CE0DF6000AEC34 /* Preview Assets.xcassets in Resources */,
+				59DE8DE524CE0DF6000AEC34 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		10122A59D03F24DBAD2BCB93 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NSSentryGun-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C97034E15B382A9289671B49 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NSSentryGun/Pods-NSSentryGun-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E28C3FBF7DA7AABD470AE7C3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NSSentryGun/Pods-NSSentryGun-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NSSentryGun/Pods-NSSentryGun-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		FD267F891EEA122A009AEB2C /* Sources */ = {
+		59DE8DD924CE0DF5000AEC34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD267F931EEA122A009AEB2C /* CameraViewController.swift in Sources */,
-				FD267F911EEA122A009AEB2C /* AppDelegate.swift in Sources */,
-				FDC6FF6B1EEAD2DB00ECA47F /* CameraView.swift in Sources */,
-				FDC6FF6D1EEAD3C200ECA47F /* SmartViewController.swift in Sources */,
-				FD8BBC9A20975238001CD1AF /* Orientations.swift in Sources */,
+				59DE8DFC24CE0E26000AEC34 /* DataView.swift in Sources */,
+				59DE8DE324CE0DF5000AEC34 /* ContentView.swift in Sources */,
+				59DE8DFA24CE0E26000AEC34 /* CameraView.swift in Sources */,
+				59DE8DF724CE0E26000AEC34 /* TargetDataViewModel.swift in Sources */,
+				59DE8DF924CE0E26000AEC34 /* SocketWorker.swift in Sources */,
+				59DE8DF824CE0E26000AEC34 /* CameraViewWrapper.swift in Sources */,
+				59DE8DFB24CE0E26000AEC34 /* CameraViewController.swift in Sources */,
+				59DE8DF624CE0E26000AEC34 /* CameraHostingController.swift in Sources */,
+				59DE8DE124CE0DF5000AEC34 /* NSSentryGunApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		FD267F991EEA122A009AEB2C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FD267F9A1EEA122A009AEB2C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		FD267F9D1EEA122A009AEB2C /* Debug */ = {
+		59DE8DEA24CE0DF6000AEC34 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -269,24 +184,29 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -305,8 +225,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -314,7 +235,7 @@
 			};
 			name = Debug;
 		};
-		FD267F9E1EEA122A009AEB2C /* Release */ = {
+		59DE8DEB24CE0DF6000AEC34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -324,24 +245,29 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -354,40 +280,56 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		FD267FA01EEA122A009AEB2C /* Debug */ = {
+		59DE8DED24CE0DF6000AEC34 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0648C5A3CC0617089F3FAD4 /* Pods-NSSentryGun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4GEC7S6VF4;
-				INFOPLIST_FILE = "$(SRCROOT)/NSSentryGun/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NSSentryGun/Preview Content\"";
+				DEVELOPMENT_TEAM = PJ3U833TSD;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NSSentryGun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rockbruno.NSSentryGun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		FD267FA11EEA122A009AEB2C /* Release */ = {
+		59DE8DEE24CE0DF6000AEC34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FFFCFA30704FECD881C44479 /* Pods-NSSentryGun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4GEC7S6VF4;
-				INFOPLIST_FILE = "$(SRCROOT)/NSSentryGun/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NSSentryGun/Preview Content\"";
+				DEVELOPMENT_TEAM = PJ3U833TSD;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NSSentryGun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rockbruno.NSSentryGun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -395,25 +337,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FD267F881EEA122A009AEB2C /* Build configuration list for PBXProject "NSSentryGun" */ = {
+		59DE8DD824CE0DF5000AEC34 /* Build configuration list for PBXProject "NSSentryGun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FD267F9D1EEA122A009AEB2C /* Debug */,
-				FD267F9E1EEA122A009AEB2C /* Release */,
+				59DE8DEA24CE0DF6000AEC34 /* Debug */,
+				59DE8DEB24CE0DF6000AEC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD267F9F1EEA122A009AEB2C /* Build configuration list for PBXNativeTarget "NSSentryGun" */ = {
+		59DE8DEC24CE0DF6000AEC34 /* Build configuration list for PBXNativeTarget "NSSentryGun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FD267FA01EEA122A009AEB2C /* Debug */,
-				FD267FA11EEA122A009AEB2C /* Release */,
+				59DE8DED24CE0DF6000AEC34 /* Debug */,
+				59DE8DEE24CE0DF6000AEC34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FD267F851EEA122A009AEB2C /* Project object */;
+	rootObject = 59DE8DD524CE0DF5000AEC34 /* Project object */;
 }

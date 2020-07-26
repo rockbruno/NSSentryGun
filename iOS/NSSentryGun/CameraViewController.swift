@@ -1,117 +1,56 @@
+import Combine
 import UIKit
-import SwiftSocket
+import SwiftUI
 
-class CameraViewController: UIViewController {
+struct CameraViewWrapper: UIViewControllerRepresentable {
 
-    let client = TCPClient(address: "192.168.1.25", port: 12340)
-    var lastSentData = ""
+    typealias UIViewControllerType = CameraViewController
+    typealias Context = UIViewControllerRepresentableContext
 
-    init() {
+    let viewController: CameraViewController
+
+    func makeUIViewController(context: Context<CameraViewWrapper>) -> CameraViewController {
+        return viewController
+    }
+
+    func updateUIViewController(_ uiViewController: CameraViewController, context: Context<CameraViewWrapper>) {}
+}
+
+final class CameraViewController: UIViewController, ObservableObject {
+
+    @ObservedObject var targetViewModel: TargetDataViewModel
+
+    init(targetViewModel: TargetDataViewModel) {
+        self.targetViewModel = targetViewModel
         super.init(nibName: nil, bundle: nil)
-        connect()
     }
 
-    private func connect() {
-        DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
-            switch self.client.connect(timeout: 10) {
-            case .success:
-                DispatchQueue.main.async {
-                    self.smartView.setConnected()
-                }
-            case let .failure(error):
-                print(error)
-                DispatchQueue.main.async {
-                    self.smartView.setDisconnected()
-                }
-            }
-        }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError()
     }
 
     override func loadView() {
-        view = CameraView(delegate: self)
+        let view = CameraView(delegate: self)
+        self.view = view
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        smartView.startCaptureSession()
+        (view as? CameraView)?.startCaptureSession()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setOrientation()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        smartView.stopCaptureSession()
-    }
-}
-
-extension CameraViewController {
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        setOrientation()
-    }
-
-    func setOrientation() {
-        guard let videoPreviewLayerConnection = smartView.videoPreviewLayer.connection else {
-            return
-        }
-        let deviceOrientation = UIDevice.current.orientation
-        guard let newVideoOrientation = deviceOrientation.videoOrientation, deviceOrientation.isPortrait || deviceOrientation.isLandscape else {
-            return
-        }
-        videoPreviewLayerConnection.videoOrientation = newVideoOrientation
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        (view as? CameraView)?.stopCaptureSession()
     }
 }
 
 extension CameraViewController: CameraViewDelegate {
-    func cameraViewFoundNoTargets() {
-        send(data: "L")
-    }
-
     func cameraViewDidTarget(frame: CGRect) {
-        let oldMin: CGFloat = 0
-        let offset: CGFloat = 40
-        let newMin: CGFloat = 0 + offset
-        let newMax: CGFloat = 180 - offset
-        let newRange = newMax - newMin
-        func convertToDegrees(position: CGFloat, oldMax: CGFloat) -> Int {
-            let oldRange = oldMax - oldMin
-            let scaledAngle = (((position - oldMin) * newRange) / oldRange) + newMin
-            return Int(scaledAngle)
-        }
-        let oldMaxX = smartView.bounds.width
-        let oldMaxY = smartView.bounds.height
-        let xAngle = convertToDegrees(position: frame.midX, oldMax: oldMaxX)
-        let yAngle = convertToDegrees(position: frame.midY, oldMax: oldMaxY)
-        smartView.set(targetX: xAngle, targetY: abs(yAngle - 180))
-        send(data: "X" + String(abs(xAngle - 180)) + ".")
+        targetViewModel.process(target: frame, view: view)
     }
 
-    func send(data: String) {
-        guard lastSentData != data else {
-            return
-        }
-        let result = client.send(data: data.data(using: .utf8)!)
-        switch result {
-        case .success:
-            lastSentData = data
-        case let .failure(error):
-            switch error {
-            case SocketError.unknownError:
-                smartView.setDisconnected()
-            default:
-                break
-            }
-        }
+    func cameraViewFoundNoTargets() {
+        targetViewModel.process(target: nil, view: view)
     }
-}
-
-extension CameraViewController: SmartViewController {
-    typealias SmartView = CameraView
 }
