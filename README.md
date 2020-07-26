@@ -2,7 +2,7 @@
 
 An iOS-powered Sentry Gun from Team Fortress 2.
 
-![bla](https://wiki.teamfortress.com/w/images/thumb/e/ee/Engywithsg.png/350px-Engywithsg.png)
+![TF2](https://wiki.teamfortress.com/w/images/thumb/e/ee/Engywithsg.png/350px-Engywithsg.png)
 
 ## Summary
 
